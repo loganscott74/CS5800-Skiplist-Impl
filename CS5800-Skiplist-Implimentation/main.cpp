@@ -105,15 +105,9 @@ public:
     /// Inserts the given val into the Skiplist
     void insert(int val) {
         Nodes* currPlace = this->head;
-        //Node nn = Node(val);
         Node* newNode = new Node(val);
         
         while (true) {
-            // If the value is already in the list, end function
-            //if (currPlace->right && currPlace->right->getValue() == val) {
-                //return;
-            //}
-            
             // If val is greater than the value of the node right of this one, go right
             if (currPlace->right && currPlace->right->getValue() < val) {
                 currPlace = currPlace->right;
@@ -140,7 +134,6 @@ public:
                 break;
             }
             
-            //Node en = Node(val);
             Node* extraNode = new Node(val);
             
             // While currPlace has no node above it and is not a head
@@ -211,11 +204,6 @@ public:
         
         if (currPlace->getValue() == val) {
             while (true) {
-                // If there will be no other items in the "row" other than the head after removal and there is something below
-                //if (dynamic_cast<Head*>(currPlace->left) && !currPlace->right && currPlace->below) {
-                    // Delete the row?
-                //}
-                
                 currPlace->left->right = currPlace->right;
                 if (currPlace->right)
                     currPlace->right->left = currPlace->left;
@@ -265,6 +253,7 @@ public:
         cout << endl;
     }
     
+    /// Gets the number of digits 
     int getDigitCount() {
         Nodes* currPlace = head;
         int length = -1;
